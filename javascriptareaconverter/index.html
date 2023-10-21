@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Area Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #0074d9;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        p {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Area Converter</h1>
+        <input type="number" id="inputValue" placeholder="Enter value">
+        <select id="unit">
+            <option value="sqm">Square Meters (sqm)</option>
+            <option value="sqft">Square Feet (sqft)</option>
+        </select>
+        <button onclick="convertArea()">Convert</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convertArea() {
+            const inputValue = parseFloat(document.getElementById("inputValue").value);
+            const unit = document.getElementById("unit").value;
+            let result = 0;
+
+            if (unit === "sqm") {
+                result = inputValue * 10.7639; // Convert square meters to square feet
+            } else {
+                result = inputValue / 10.7639; // Convert square feet to square meters
+            }
+
+            document.getElementById("result").textContent = `${inputValue} ${unit} is equal to ${result.toFixed(2)} ${unit === "sqm" ? "sqft" : "sqm"}`;
+        }
+    </script>
+</body>
+</html>
